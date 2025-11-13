@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="CitySimulation.Views.AutomotiveIndustry_20.AutomotiveIndustry"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CitySimulation.Views.AutomotiveIndustry_20"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Форма ввода -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,10">
+            <Label Content="Создание заказа автомобилестроения" FontSize="16" FontWeight="Bold"/>
+            <Label Content="Компания"/>
+            <!-- Поле: Адрес завода -->
+            <TextBox x:Name="TxtFactoryAddress" Margin="0,5"/>
+            <Label Content="Адресс завода"/>
+            <!-- Поле: Компания -->
+            <TextBox x:Name="TxtCompanyName" Margin="0,5"/>
+            <Label Content="Модели"/>
+            <!-- Поле: Производимые модели -->
+            <TextBox x:Name="TxtProducedModels" Margin="0,5"/>
+            <Label Content="Адресс откуда доставляются детали"/>
+            <!-- Поле: Адрес доставки деталей -->
+            <TextBox x:Name="TxtPartsSourceAddress" Margin="0,5"/>
+            <Label Content="Адресс куда доставляются машины"/>
+            <!-- Поле: Адрес доставки готовых машин -->
+            <TextBox x:Name="TxtDeliveryDestinationAddress" Margin="0,5"/>
+
+            <Button Content="Добавить заказ" Margin="0,10" Click="BtnAddOrder_Click"/>
+        </StackPanel>
+
+        <!-- Кнопки сохранения и загрузки -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
+            <Button Content="Сохранить отчет" Margin="0,0,10,0" Click="BtnSaveReport_Click"/>
+            <Button Content="Загрузить отчет" Click="BtnLoadReport_Click"/>
+        </StackPanel>
+
+        <!-- Список заказов -->
+        <DataGrid Grid.Row="2" x:Name="OrdersGrid" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                <DataGridTextColumn Header="Компания" Binding="{Binding CompanyName}" Width="*"/>
+                <DataGridTextColumn Header="Адрес завода" Binding="{Binding FactoryAddress}" Width="*"/>
+                <DataGridTextColumn Header="Модели" Binding="{Binding ProducedModels}" Width="*"/>
+                <DataGridTextColumn Header="Доставка деталей" Binding="{Binding PartsSourceAddress}" Width="*"/>
+                <DataGridTextColumn Header="Доставка машин" Binding="{Binding DeliveryDestinationAddress}" Width="*"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding DateCreated, StringFormat=yyyy-MM-dd HH:mm}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

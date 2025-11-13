@@ -1,19 +1,40 @@
 ﻿<Window x:Class="CitySimulation.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:foreign="clr-namespace:CitySimulation.Views.ForeignRelations"
         xmlns:emergency="clr-namespace:CitySimulation.Views.EmergencyService"
-        Title="City Simulation - Внешние связи и Пожарные службы" 
-        Height="800" Width="1200"
-        WindowStartupLocation="CenterScreen">
+        xmlns:foreign="clr-namespace:CitySimulation.Views.ForeignRelations"
+        xmlns:extraction="clr-namespace:CitySimulation.Views.ResourceExtraction_17"
+        xmlns:production="clr-namespace:CitySimulation.Views.Production_18"
+        xmlns:logistic="clr-namespace:CitySimulation.Views.Logistics_19"
+        xmlns:automotive="clr-namespace:CitySimulation.Views.AutomotiveIndustry_20"
+        Title="City Simulation Project" Height="800" Width="1200">
 
     <Grid>
         <TabControl>
-            <TabItem Header="Внешние связи">
+            <!-- Существующие вкладки -->
+            <TabItem Header="МЧС (8)">
+                <emergency:EmergencyServiceView/>
+            </TabItem>
+
+            <TabItem Header="Внешние связи (25)">
                 <foreign:ForeignRelationsView/>
             </TabItem>
-            <TabItem Header="Пожарные службы">
-                <emergency:EmergencyServiceView/>
+
+            <!-- Новые вкладки для вариантов 17 и 18 -->
+            <TabItem Header="Добыча ресурсов (17)">
+                <extraction:ResourceExtractionView/>
+            </TabItem>
+
+            <TabItem Header="Производственные цеха (18)">
+                <production:ProductionView/>
+            </TabItem>
+
+            <TabItem Header="Логистика (19)">
+                <logistic:LogisticsView/>
+            </TabItem>
+
+            <TabItem Header="Автомобилестроение (20)">
+                <automotive:AutomotiveIndustry/>
             </TabItem>
         </TabControl>
     </Grid>
